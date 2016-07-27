@@ -1,0 +1,21 @@
+.traffic-light {
+  background: black;
+  margin-bottom: 10px;
+  padding: 20px;
+  width: 200px; }
+  .traffic-light .light {
+    background: white;
+    border-radius: 100%;
+    height: 150px;
+    margin: 0 auto 10px auto;
+    width: 150px; }
+    .traffic-light .light.green {
+      background: #0f0; }
+    .traffic-light .light.red {
+      background: red; }
+    .traffic-light .light.yellow {
+      background: yellow; }
+    .traffic-light .light.off {
+      opacity: 0.3; }
+    .traffic-light .light:last-child {
+      margin-bottom: 0; }
