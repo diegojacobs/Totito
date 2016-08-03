@@ -1,18 +1,50 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <link rel="stylesheet" href="css/styles.css">
-  <title>Example</title>
+  <head>
+    <script type="text/javascript" src="scripts/app.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <div order="1" class="table" id="table">
+      <div class="row1">
+         <div class="section s1x1" id="1x1"></div>
+         <div class="section s1x2" id="1x2"></div>
+         <div class="section s1x3" id="1x3"></div>
+      </div>
 
-</head>
-<body>
-  <h1>Ejemplo javascript</h1>
+      <div class="row2">
+         <div class="section s2x1" id="2x1"></div>
+         <div class="section s2x2" id="2x2"></div>
+         <div class="section s2x3" id="2x3"></div>
+      </div>
 
-  <div id="viewport"></div>
+      <div class="row3">
+         <div class="section s3x1" id="3x1"></div>
+         <div class="section s3x2" id="3x2"></div>
+         <div class="section s3x3" id="3x3"></div>
+      </div>
+    </div>
+    <div class="pieces">
+      <div id="J1" style="top: 19px; left: 547px; color:#00008B; position:absolute; height: 45px; width: 158px;">
+        <span style="font-family:Verdana; font-size:30px;">
+          Jugador 1
+        </span>
+      </div>
 
-  <button id="change">Change</button>
+      <div id="J2" style="top: 158px; left: 550px; color:#8B0000;position:absolute; height: 45px; width: 158px;">
+        <span style="font-family:Verdana; font-size:30px;">
+          Jugador 2
+        </span>
+      </div>
+      
+      <img id="o1" src="/images/O.png" style="top:20px; left:719px; position:absolute;" onmousedown="agarrar(this.id);"  onmouseover="this.style.cursor = 'move';" />
+      <img id="o2" src="/images/O.png" style="top:20px; left:719px; position:absolute;" onmousedown="agarrar(this.id);"  onmouseover="this.style.cursor = 'move';" />
+      <img id="o3" src="/images/O.png" style="top:20px; left:719px; position:absolute;" onmousedown="agarrar(this.id);"  onmouseover="this.style.cursor = 'move';"/>
 
-  <script src="scripts/app.js"></script>
 
-</body>
+      <img id="x1" src="/images/X.png" style="top:159px; left:730px; position:absolute;" onmousedown="agarrar(this.id);"  onmouseover="this.style.cursor = 'move';" />
+      <img id="x2" src="/images/X.png" style="top:159px; left:730px; position:absolute;" onmousedown="agarrar(this.id);"  onmouseover="this.style.cursor = 'move';" />
+      <img id="x3" src="/images/X.png" style="top:159px; left:730px; position:absolute;" onmousedown="agarrar(this.id);"  onmouseover="this.style.cursor = 'move';" />
+    </div>
+  </body>
 </html>

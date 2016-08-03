@@ -1,36 +1,44 @@
-$traffic-light-width: 200px;
-$light-size: $traffic-light-width*0.75;
-.traffic-light{
-  background: black;
-  margin-bottom: 10px;
-  padding: $traffic-light-width*0.1;
-  width: $traffic-light-width;
+body{
+	background-color: black;
+}
+.table{
+	width: 50%;
+	float: left;
+}
+.pieces{
+	width: 50%;
+	float: right;
+}
+.image{
+	position: absolute;
+	top: 50px;
+	left: 500px;
+}
+.section{
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	padding: 10px;
+}
 
-  .light{
-    background: white;
-    border-radius: 100%;
-    height: $light-size;
-    margin: 0 auto 10px auto;
-    width: $light-size;
+.o1{
+	top: 20px;
+	left: 719px;
+	position: absolute;
+}
+@for $i from 1 to 10{
+	@for $j from 1 to 4{
+		
+		@if $i<3{
+			.s#{$i}x#{$j}{
+				border-bottom: solid white 2px;
+			}
+		}
 
-    &.green{
-      background: #0f0;
-    }
-
-    &.red{
-      background: red;
-    }
-
-    &.yellow{
-      background: yellow;
-    }
-
-    &.off{
-      opacity: 0.3;
-    }
-
-    &:last-child{
-      margin-bottom: 0;
-    }
-  }
+		@if $j<3{
+			.s#{$i}x#{$j}{
+				border-right: solid white 2px;
+			}
+		}
+	}
 }

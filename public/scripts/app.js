@@ -1,61 +1,32 @@
-/*
+function agarrar(id)
+{
+    objeto = document.getElementById(id);
 
-state = 0: red
-state = 1: yellow
-state = 2: green
+        xmouse = event.clientX + window.scrollX;
+        ymouse = event.clientY + window.scrollY;
 
-*/
+        document.addEventListener("mousemove", mover, true);
+        document.addEventListener("mouseup", soltar, true);
 
-// Modelo / estado
-var state = 0;
+    x1 = parseInt(objeto.style.left);
+    y1 = parseInt(objeto.style.top);
 
-var viewport = document.getElementById("viewport");
-var changeTrigger = document.getElementById("change");
-
-changeTrigger.addEventListener("click", function(){
-  if(state === 0){
-    state = 2;
-  }
-  else if(state === 1){
-    state = 0;
-  }
-  else{
-    state = 1;
-  }
-
-  viewport.innerHTML = render(state);
-});
-
-
-function render(state){
-  var html = "";
-
-  html += '<div class="traffic-light">';
-
-  if(state === 0){
-    html += '<div class="red light"></div>';
-  }
-  else{
-    html += '<div class="red light off"></div>';
-  }
-
-  if(state === 1){
-    html += '<div class="yellow light"></div>';
-  }
-  else{
-    html += '<div class="yellow light off"></div>';
-  }
-
-  if(state === 2){
-    html += '<div class="green light"></div>';
-  }
-  else{
-    html += '<div class="green light off"></div>';
-  }
-
-  html += '</div>';
-
-  return html;
 }
 
-viewport.innerHTML = render(state);
+function mover()
+{
+    var xActual, yActual;
+
+        x2 = event.clientX + window.scrollX;
+        y2 = event.clientY + window.scrollY;
+
+    objeto.style.left=(x1 + x2 - xmouse)+"px";
+    objeto.style.top=(y1 + y2 - ymouse)+"px";
+}
+
+function soltar()
+{
+        document.removeEventListener("mousemove", mover, true);
+        document.removeEventListener("mouseup", soltar, true);
+  
+ }

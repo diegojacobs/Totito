@@ -1,21 +1,98 @@
-.traffic-light {
-  background: black;
-  margin-bottom: 10px;
-  padding: 20px;
-  width: 200px; }
-  .traffic-light .light {
-    background: white;
-    border-radius: 100%;
-    height: 150px;
-    margin: 0 auto 10px auto;
-    width: 150px; }
-    .traffic-light .light.green {
-      background: #0f0; }
-    .traffic-light .light.red {
-      background: red; }
-    .traffic-light .light.yellow {
-      background: yellow; }
-    .traffic-light .light.off {
-      opacity: 0.3; }
-    .traffic-light .light:last-child {
-      margin-bottom: 0; }
+body {
+  background-color: black; }
+
+.table {
+  width: 50%;
+  float: left; }
+
+.pieces {
+  width: 50%;
+  float: right; }
+
+.image {
+  position: absolute;
+  top: 50px;
+  left: 500px; }
+
+.section {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  padding: 10px; }
+
+.o1 {
+  top: 20px;
+  left: 719px;
+  position: absolute; }
+
+.s1x1 {
+  border-bottom: solid white 2px; }
+
+.s1x1 {
+  border-right: solid white 2px; }
+
+.s1x2 {
+  border-bottom: solid white 2px; }
+
+.s1x2 {
+  border-right: solid white 2px; }
+
+.s1x3 {
+  border-bottom: solid white 2px; }
+
+.s2x1 {
+  border-bottom: solid white 2px; }
+
+.s2x1 {
+  border-right: solid white 2px; }
+
+.s2x2 {
+  border-bottom: solid white 2px; }
+
+.s2x2 {
+  border-right: solid white 2px; }
+
+.s2x3 {
+  border-bottom: solid white 2px; }
+
+.s3x1 {
+  border-right: solid white 2px; }
+
+.s3x2 {
+  border-right: solid white 2px; }
+
+.s4x1 {
+  border-right: solid white 2px; }
+
+.s4x2 {
+  border-right: solid white 2px; }
+
+.s5x1 {
+  border-right: solid white 2px; }
+
+.s5x2 {
+  border-right: solid white 2px; }
+
+.s6x1 {
+  border-right: solid white 2px; }
+
+.s6x2 {
+  border-right: solid white 2px; }
+
+.s7x1 {
+  border-right: solid white 2px; }
+
+.s7x2 {
+  border-right: solid white 2px; }
+
+.s8x1 {
+  border-right: solid white 2px; }
+
+.s8x2 {
+  border-right: solid white 2px; }
+
+.s9x1 {
+  border-right: solid white 2px; }
+
+.s9x2 {
+  border-right: solid white 2px; }
