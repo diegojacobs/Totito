@@ -1,32 +1,44 @@
+$width: 200px;
+$height: 200px;
+
 body{
 	background-color: black;
 }
-.table{
-	width: 50%;
-	float: left;
-}
-.pieces{
-	width: 50%;
-	float: right;
-}
-.image{
-	position: absolute;
-	top: 50px;
-	left: 500px;
-}
-.section{
-	display: inline-block;
-	width: 100px;
-	height: 100px;
-	padding: 10px;
+
+.winner-section {
+  display: none;
+  left: 10px;
+  margin: 0 auto;
+  position: absolute;
+  text-align: center;
+  top: 10px;
 }
 
-.o1{
-	top: 20px;
-	left: 719px;
-	position: absolute;
+.board {
+  width: 650px;
 }
-@for $i from 1 to 10{
+
+.section {
+  background-color: black;
+  width: $width;
+  height: $height;
+  float: left;
+
+  font-family: arial;
+  font-weight: bold;
+  font-size: $height;
+  line-height: $height;
+  text-align: center;
+}
+
+.winner{
+	color: white;
+  font-family: arial;
+  font-weight: bold;
+  font-size: $height;
+}
+
+@for $i from 1 to 4{
 	@for $j from 1 to 4{
 		
 		@if $i<3{
