@@ -14,20 +14,30 @@ body {
 
 .section {
   background-color: black;
-  width: 200px;
-  height: 200px;
   float: left;
   font-family: arial;
-  font-weight: bold;
   font-size: 200px;
+  font-weight: bold;
+  height: 200px;
   line-height: 200px;
-  text-align: center; }
+  text-align: center;
+  width: 200px; }
 
-.winner {
+#winner {
   color: white;
   font-family: arial;
-  font-weight: bold;
-  font-size: 200px; }
+  font-size: 100px;
+  font-weight: bold; }
+
+button {
+  background-color: #4CAF50;
+  border: none;
+  color: black;
+  display: inline-block;
+  font-size: 16px;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none; }
 
 .s1x1 {
   border-bottom: solid white 2px; }
