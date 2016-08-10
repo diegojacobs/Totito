@@ -1,107 +1,114 @@
-var turn = 1;
-var board = [ [0, 0, 0],
-              [0, 0, 0],
-              [0, 0, 0] ];
+var state = {
+  turn: 1,
+  board: [ [0, 0, 0],
+           [0, 0, 0],
+           [0, 0, 0] ]
+};
 
 var game = document.getElementById('game');
-var html = '<div class="board" id="board">';
-html += '<div class="section s1x1" id="1x1"></div>';
-html += '<div class="section s1x2" id="1x2"></div>';
-html += '<div class="section s1x3" id="1x3"></div>';
-html += '<div class="section s2x1" id="2x1"></div>';
-html += '<div class="section s2x2" id="2x2"></div>';
-html += '<div class="section s2x3" id="2x3"></div>';
-html += '<div class="section s3x1" id="3x1"></div>';
-html += '<div class="section s3x2" id="3x2"></div>';
-html += '<div class="section s3x3" id="3x3"></div>';
-html += '</div>';
-html += '<div class="turn" id="turn"></div>';
-html += '<div class="winner-section" id="winner-section">';
-html += '<h1 id="winner"></h1>';
-html += '<button onclick="restart()">Reset</button>';
-html += '';
-game.innerHTML = html;
+
+game.innerHTML = render(state);
 
 for (var column = 1; column <= 3; column++) {
   for (var row = 1; row <= 3; row++) {
-    document.getElementById('' + column + 'x' + row).onclick = on_click;
+    document.getElementById('' + column + 'x' + row).onclick = onClick;
   }
 }
 
-function on_click() {
-  var state = {id: this.id, player: turn};
-  render(state);
-}
-
+document.getElementById('restart').onclick = restart;
 
 function render(state){
+  var html = '<div class="board" id="board">';
 
-  var row = state.id.split('x')[0] - 1;
-  var column = state.id.split('x')[1] - 1;
-
-
-  if (board[row][column] !== 0) {
-    return;
-  }
-
-  board[row][column] = turn;
-
-  turn = marcar_jugada(state.id, state.player)
-  var resultado = verificar_jugada(row, column);
-
-  if (!resultado) {
-    return;
-  }
-
-  finalizar_juego(resultado);
-
-  var result = document.getElementById('winner-section');
-  var grid = document.getElementById('board');
-  grid.style.display = 'none';
-  result.style.display = 'block';
+  html += '<div class="section s1x1" id="1x1"></div>';
+  html += '<div class="section s1x2" id="1x2"></div>';
+  html += '<div class="section s1x3" id="1x3"></div>';
+  html += '<div class="section s2x1" id="2x1"></div>';
+  html += '<div class="section s2x2" id="2x2"></div>';
+  html += '<div class="section s2x3" id="2x3"></div>';
+  html += '<div class="section s3x1" id="3x1"></div>';
+  html += '<div class="section s3x2" id="3x2"></div>';
+  html += '<div class="section s3x3" id="3x3"></div>';
+  html += '</div>';
+  html += '<div class="turn" id="turn"></div>';
+  html += '<div class="winner-section" id="winner-section">';
+  html += '<h1 id="winner"></h1>';
+  html += '<button id="restart" onclick="restart()">Reset</button>';
+  html += '';
+  return html;
 }
-function evaluar_empate() {
-  for (var fila = 0; fila <= 2; fila++) {
-    for (var columna = 0; columna <= 2; columna++) {
-      if (board[fila][columna] === 0) {
+function onClick() {
+  evaluate(this.id, state.turn);
+}
+
+function evaluate(section, turn){
+
+  var row = section.split('x')[0] - 1;
+  var column = section.split('x')[1] - 1;
+
+
+  if (state.board[row][column] !== 0) {
+    return;
+  }
+
+  state.board[row][column] = state.turn;
+
+  state.turn = printPlay(section, state.turn)
+  var result = check(row, column);
+
+  if (!result) {
+    return;
+  }
+
+  endGame(result);
+
+  var winner = document.getElementById('winner-section');
+  var board = document.getElementById('board');
+  board.style.display = 'none';
+  winner.style.display = 'block';
+}
+
+function isTie() {
+  for (var row = 0; row <= 2; row++) {
+    for (var column = 0; column <= 2; column++) {
+      if (state.board[row][column] === 0) {
         return false;
       }
     }
   }
-
   return true;
 }
 
-function verificar_jugada(column, row) {
-  if (evaluar_empate()){
+function check(column, row) {
+  if (isTie()){
     return -1;
   }
 
-  if (board[column][0] === board[column][1] && board[column][1] === board[column][2]) {
-    return board[column][row];
+  if (state.board[column][0] === state.board[column][1] && state.board[column][1] === state.board[column][2]) {
+    return state.board[column][row];
   }
 
-  if (board[0][row] === board[1][row] && board[1][row] === board[2][row]) {
-    return board[column][row];
+  if (state.board[0][row] === state.board[1][row] && state.board[1][row] === state.board[2][row]) {
+    return state.board[column][row];
   }
 
-  var center = board[1][1];
+  var center = state.board[1][1];
 
   if (center !== 0) {
 
-    if (board[0][0] === center && center === board[2][2]) {
-      return board[column][row];
+    if (state.board[0][0] === center && center === state.board[2][2]) {
+      return state.board[column][row];
     }
 
-    if (board[0][2] === center && center === board[2][0]) {
-      return board[column][row];
+    if (state.board[0][2] === center && center === state.board[2][0]) {
+      return state.board[column][row];
     }
   }
 
   return null;
 }
 
-function marcar_jugada(board_element_id, turn) {
+function printPlay(board_element_id, turn) {
   var board_element = document.getElementById(board_element_id);
 
   if (turn === 1) {
@@ -117,7 +124,7 @@ function marcar_jugada(board_element_id, turn) {
   return turno_jugador;
 }
 
-function finalizar_juego(resultado) {
+function endGame(resultado) {
   var fin_juego = document.getElementById("winner");
   fin_juego.innerHTML = "Tie";
 
