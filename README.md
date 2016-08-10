@@ -1,2 +1,3 @@
-# basic-javascript-trafficlight
-Basic Javascript Traffic Light
+# Totito
+Diego Jacobs
+
